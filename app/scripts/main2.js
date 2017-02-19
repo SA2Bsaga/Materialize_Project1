@@ -1,5 +1,3 @@
-console.log('\'Allo \'Allo!');
-
 var yellow = [60, 200, 50];
 var blue = [196, 77, 55];
 var purple = [280, 50, 60];
@@ -26,8 +24,6 @@ function drawTitle3() {
 	drawName(title3, color);
 };
 
-var bubbleShape = 'circle';
+bubbleShape = 'circle';
 
-function bounceThis() {
-	bounceBubbles();
-};
+bounceBubbles();
