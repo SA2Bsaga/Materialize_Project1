@@ -5,12 +5,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project 1 -- Iel Cunanan</title>
-    <script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="scripts/alphabet.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     
     <style>
-    #myCanvas {
+    #logo {
       margin: 0 auto;
       max-width: 100%;
     }
@@ -22,6 +20,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/materialize/bin/materialize.css" />
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -51,7 +50,7 @@
   </nav>
 
   <div id="logo">
-    <canvas id="myCanvas" style="border:1px solid #000000;"> </canvas>
+    <canvas id="myCanvas"> </canvas>
   </div>  
  
  <div id="skill" class="section-header center-align">
@@ -62,18 +61,37 @@
     
     var dataArray = [20, 40, 70];
 
+    var widthScale = d3.scale.linear()
+                    .domain([0, 60])
+                    .range([0, 500]);
+
+    var color = d3.scale.linear()
+                .domain([0, 60])
+                .range(["green", "blue"]);
+
+    var axis = d3.svg.axis()
+                .scale(widthScale);
+
     var canva = d3.select("body")
             .append("svg")
             .attr("width", 500)
-            .attr("height", 500);
+            .attr("height", 500)
+            .append("g")
+            .attr("transform", "translate(50, 60)")
+            
 
     var bars = canva.selectAll("rect")
           .data(dataArray)
           .enter()
             .append("rect")
-            .attr("height", function(d) { return d; })
+            .attr("height", function(d) { return widthScale(d); })
             .attr("width", 50)
+            .attr("fill", function (d) { return color(d); })
             .attr("x", function(d, i) {return i * 100});
+
+    canva.append("g")
+          .attr("transform", "translate(0, 400)")
+          .call(axis);
   </script>
 
   <div class="container">
@@ -154,12 +172,15 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/bower_components/materialize/bin/materialize.js"></script>
+    <script src="/bower_components/d3/d3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     
     <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/jquery-1.10.2.min.js"></script>
+    <script src="scripts/alphabet.js"></script>
     <script src="scripts/bubbles.js"></script>
+    <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </div>
   </body>

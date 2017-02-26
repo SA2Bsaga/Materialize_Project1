@@ -249,7 +249,7 @@ function drawName(name, letterColors) {
             var bc = letterColors[ix % letterColors.length];
  
             for (var i = 0; i < chr_data.length; ++i) {
-                var point = chr_data[i];
+                point = chr_data[i];
  
                 g.push(new Point(point[0] + offset,
                     point[1],
@@ -299,6 +299,7 @@ var canvasHeight;
 var canvasWidth;
 var ctx;
 var pointCollection;
+var point;
  
 document.rotationForce = 0.0;
 document.Friction = 0.85;
