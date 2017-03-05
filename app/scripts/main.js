@@ -1,31 +1,29 @@
-var yellow = [60, 200, 50];
-var blue = [196, 77, 55];
-var purple = [280, 50, 60];
+$(document).ready(function() {
+    $('.brand-logo').hide().toggle('drop');
+    $('#photo1').hide().delay(1100).show('drop');
+    $('#photo2').hide().delay(2200).show('drop');
+    $('.parallax-container').hide().fadeIn(1000);
+    $('.parallax').parallax();
 
-var color = [yellow, blue, purple];
+    $('.tlt').textillate({ in: { effect: 'fadeInLeft' } });
+    $('#to_the_top').scroll2Top({
+      appearAt: 650,
+      scrollSpeed: 150
+    });
 
-var title1 = 'Iel Cunanan';
-var title2 = 'Web techie';
-var title3 = 'Avid game watcher';
+});
 
-window.onload = function timedDraw() {
-	setInterval(drawTitle1, 2500);
-	setInterval(drawTitle2, 5000);
-	setInterval(drawTitle3, 7500);
-};
-
-function drawTitle1() {
-	drawName(title1, color);
-};
-function drawTitle2() {
-	drawName(title2, color);
-};
-function drawTitle3() {
-	drawName(title3, color);
-};
-
-var bubbleShape = 'circle';
-
-function bounceThis() {
-	bounceBubbles();
-};
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
