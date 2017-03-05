@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<title>Project 3 - Canvas Animation</title>
+<meta charset='utf-8'>
+<style>
+canvas {
+	border: 1px solid black;
+}
+</style>
+<script>
+
+var canvas;
+var context;
+var shapes = [];
+var timer;
+var timer2;
+var timer3;
+
+function Shape(x, y) {
+		this.x = x;
+		this.y = y;
+		this.size = Math.random()*20+5;
+		this.dx = Math.random()*4-2;
+		this.dy = Math.random()*4-2;
+
+	  }
+	  
+function degreesToRadians(degrees) {
+	return(degrees * Math.PI)/180;
+}
+
+function drawBox(box) {
+	
+	context.globalCompositeOperation = 'destination-over';
+
+	context.beginPath();
+	context.fillStyle = box.color;
+	context.fillRect(box.x, box.y, box.size, box.size);
+    context.strokeRect(box.x, box.y,50,50);
+}
+
+function drawFrame() {
+
+	context.fillStyle = 'rgba(0, 0, 0, 0.9)';
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	
+}
+
+function drawDot(p) {
+
+	//You can manipulate the globalCompositeOperation anyway you like.
+	/*context.globalCompositeOperation = 'source-over';
+	context.fillStyle = 'rgba(0, 0, 0, 0.3)';
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	context.globalCompositeOperation = 'lighter';*/
+		context.beginPath();
+		context.arc(p.x, p.y, p.size, 20, degreesToRadians(360), true);
+		context.fillStyle = p.color;
+		context.fill();
+		
+		
+		if(p.size > 0){
+			p.size -= .5;
+			if(p.size < 0)
+			p.size += .5;
+		}
+		p.x += p.dx;
+		p.y += p.dy;
+
+}
+
+function drawTri(triangle) {
+	context.beginPath();
+		context.fillStyle = triangle.color;
+		context.moveTo(triangle.x+(Math.random()*triangle.size),triangle.y);
+		context.lineTo(triangle.x,triangle.y);
+		context.lineTo(triangle.x,triangle.y+(Math.random()*triangle.size));
+	    context.closePath();
+        context.fill();
+	
+}
+
+function drawStar(star) {
+	context.beginPath();
+	context.moveTo(star.x+100, star.y+50);
+	context.lineTo(star.x+105, star.y+10);
+	context.lineTo(star.x+110, star.y+50);
+	context.lineTo(star.x+150, star.y+55);
+	context.lineTo(star.x+110, star.y+60);
+	context.lineTo(star.x+105, star.y+100);
+	context.lineTo(star.x+100, star.y+60);
+	context.lineTo(star.x+60, star.y+55);
+	context.lineTo(star.x+100, star.y+50);
+	context.strokeStyle = 'white';
+	context.stroke();
+	context.fillStyle = 'yellow';
+	context.fill();
+}
+
+function drawMoon() {
+	//context.globalCompositeOperation('lighter');
+	context.beginPath();
+	context.arc(370, 80, 70, 0, Math.PI/2, true);
+	context.fillStyle = 'white';
+	context.fill();
+	
+}
+
+function handleClick(x, y) {
+	
+	context.font = '60px Verdana';
+	context.fillText('I need more help!', x, y);
+	content.fillStyle = 'white';
+	content.fill();
+}
+
+function takeInput() {
+	canvas.width = window.innerWidth-20;
+    canvas.height = window.innerHeight-20;
+	var x = Math.random() * canvas.width;
+	var y = Math.random() * canvas.height;
+	//var colors = ["red", "green", "blue", "orange", "purple", "yellow"];
+	//var color = colors[Math.floor(Math.random()*colors.length)];
+	shapes.push(new Shape(x, y));
+	var shapeValue = document.getElementById("userInput");
+	var shape = shapeValue.value;
+	drawFrame();
+	for(var i = 0; i<shapes.length; i++){
+	switch (shape) {
+					case "Box":
+						drawBox(shapes[i]);
+						break;
+					case "Dot":
+						drawDot(shapes[i]);
+						break;
+					case "Star":
+						drawStar(shapes[i]);
+						break;
+					case "Tri":
+						drawTri(shapes[i]);
+						break;
+				}
+	if (shapes[i].x + shapes[i].dx > canvas.width || shapes[i].x + shapes[i].dx < 0)
+				shapes[i].dx = -shapes[i].dx;
+			if (shapes[i].y + shapes[i].dy > canvas.height || shapes[i].y + shapes[i].dy < 0)
+				shapes[i].dy = -shapes[i].dy;
+				shapes[i].x += shapes[i].dx;
+				shapes[i].y += shapes[i].dy;
+	}
+	
+}
+
+window.onload = function() {
+//one timer that works with different things at different intervals
+
+	canvas = document.getElementById('canvas');
+	context = canvas.getContext('2d');
+	drawFrame();
+	takeInput();
+	
+	
+	canvas.onclick = function(event) {
+		handleClick(event.clientX, event.clientY);
+	};
+	timer = setInterval(takeInput, 40);
+	var button = document.getElementById("submitButton");
+	button.onclick = takeInput;
+	
+
+}
+
+</script>
+</head>
+<body>
+	<canvas id='canvas' width='500' height='400'></canvas>
+<p>Type in any of the following! ("Box","Star","Tri","Dot")</p>
+<p>Then click anywhere on the screen to reveal the message!</p>
+<form>
+ <input type="text" id="userInput" size="15" placeholder="Enter Shape">
+ </form>
+</body>
+</html>

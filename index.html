@@ -7,11 +7,11 @@
     <title>Project 1 -- Iel Cunanan</title>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     
-    <style>
+    <!-- <style>
     #logo {
       margin: 0 auto;
       max-width: 100%;
-    }
+    } -->
     </style>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -29,100 +29,126 @@
     <![endif]-->
 
   <nav>
-    <div class="nav-wrapper blue darken-3">
-      <a href="#" class="brand-logo">Iel Cunanan</a>
+    <div class="nav-wrapper blue darken-4">
+      <a href="#about" class="brand-logo"><img src="images/CunananIel3C-Sector.JPG" width="110" height="64"></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Skillset</a></li>
-        <li><a href="badges.html">Gallery</a></li>
-        <li><a href="collapsible.html">About</a></li>
+        <li><a href="#skill">Skillset</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
-
-  <div id="logo">
-    <canvas id="myCanvas"> </canvas>
-  </div>  
+  <div class="parallax-container valign-wrapper">
+      <div class="container center-align">
+        <div class="row">
+          <div class="valign">
+            <h1 id="banner-title" class="thin-text blue-text">Iel Cunanan</h1>
+            <h4 class="tlt white-text">Front-end web developer / designer</h4>
+          </div>
+        </div>
+        <div class="row">
+          <a class="waves-effect btn-large hoverable blue accent-3" href="#about">Welcome!</a>
+        </div>
+      </div>
+        <div id="pbackground" class="parallax">
+        </div>
+  </div>
  
- <div id="skill" class="section-header center-align">
+ <div id="skill" class="container section-header center-align">
     <h3>Skillset</h3>
+    <div class="divider"></div>
   </div>
   
-  <script>
-    
-    var dataArray = [20, 40, 70];
+  <div class="container valign center-align">
+    <script>
 
-    var widthScale = d3.scale.linear()
-                    .domain([0, 60])
-                    .range([0, 500]);
+    var width = 960,
+        height = 500,
+        radius = Math.min(width, height) / 2;
 
-    var color = d3.scale.linear()
-                .domain([0, 60])
-                .range(["green", "blue"]);
+    var color = d3.scale.ordinal()
+        .range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00']);
 
-    var axis = d3.svg.axis()
-                .scale(widthScale);
+    var arc = d3.svg.arc()
+        .outerRadius(radius - 10)
+        .innerRadius(radius - 70);
 
-    var canva = d3.select("body")
-            .append("svg")
-            .attr("width", 500)
-            .attr("height", 500)
-            .append("g")
-            .attr("transform", "translate(50, 60)")
-            
+    var pie = d3.layout.pie()
+        .sort(null)
+        .value(function(d) { return d.population; });
 
-    var bars = canva.selectAll("rect")
-          .data(dataArray)
-          .enter()
-            .append("rect")
-            .attr("height", function(d) { return widthScale(d); })
-            .attr("width", 50)
-            .attr("fill", function (d) { return color(d); })
-            .attr("x", function(d, i) {return i * 100});
+    var svg = d3.select('body').append('svg')
+        .attr('width', width)
+        .attr('height', height)
+      .append('g')
+        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
-    canva.append("g")
-          .attr("transform", "translate(0, 400)")
-          .call(axis);
-  </script>
+    d3.csv('data.csv', type, function(error, data) {
+      if (error) throw error;
+
+      var g = svg.selectAll('.arc')
+          .data(pie(data))
+        .enter().append('g')
+          .attr('class', 'arc');
+
+      g.append('path')
+          .attr('d', arc)
+          .style('fill', function(d) { return color(d.data.age); });
+
+      g.append('text')
+          .attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; })
+          .attr('dy', '.35em')
+          .text(function(d) { return d.data.age; });
+    });
+
+    function type(d) {
+      d.population = +d.population;
+      return d;
+    }
+
+    </script>
+  </div>
 
   <div class="container">
     <div class="row">
       <div id="gallery" class="section-header center-align">
         <h3>Selected Gallery Feature</h3>
       </div>
+      <div id="gallery" class="divider"></div>
       <div class="col l4 s12">
         <div class="card">
             <div class="card-image">
-              <img src="images/sample-1.jpg">
-              <span class="card-title">Card Title</span>
+              <img class="pieces" src="images/port_1.png">
             </div>
             <div class="card-content">
-              <p>A simple hand-drawn illustration.</p>
+              <p>Small animation displaying various objects according to user input.</p>
             </div>
           </div>
       </div>
       <div class="col l4 s12">
         <div class="card">
             <div class="card-image">
-              <img src="images/sample-1.jpg">
+              <img class="pieces" src="images/port_2.png">
               <span class="card-title">Card Title</span>
             </div>
             <div class="card-content">
-              <p>A small animation that displays various objects according to user input.</p>
+              <p>Animated logo made with JavaScript and jQuery.</p>
             </div>
           </div>
       </div>
       <div class="col l4 s12">
         <div class="card">
             <div class="card-image">
-              <img src="images/sample-1.jpg">
-              <span class="card-title">Card Title</span>
+              <img class="pieces" src="images/Full_Power_Duo_Magazine1.png">
             </div>
             <div class="card-content">
-              <p>JavaScript-based survey. </p>
+              <p>A fictional magazine project.<br> Made with Photoshop.</p>
             </div>
           </div>
       </div>
   </div>
+</div>
 
 
   <div class="container">
@@ -130,23 +156,60 @@
       <div id="about" class="section-header center-align">
         <h3>About Me</h3>
       </div>
+      <div id="about" class="divider"></div>
       <div class="col l2 s12">
-        <img src="images/CunananIel2Onionhead.JPG" height="180" width="240">
+        <img class="intro" src="images/CunananIel2Onionhead.JPG" height="240" width="360">
       </div>
-      <div class="col l4 offset-l6 s12">
-        <p>Lorem ipsum dolor sit amet, aenean ornare pellentesque, molestie tellus vel nunc, vestibulum nunc a fringilla tincidunt, enim sed luctus consequat nec, ac suscipit nulla ut nunc ultrices mi..</p>
+      <div class="col l5 offset-l5 s12">
+        <h5 class="right-align">I am an up-and-coming web developer from Inverness, FL. My services are available from doing startups to site maintenance.<br> Allow me to grow your business with clean and simple-designed websites!</h5>
       </div>
     </div>
-    <div class="divider"></div>
+    
     <div class="row">
-      <div class="col l6 s12">
-        <p">Lorem ipsum dolor sit amet, aenean ornare pellentesque, molestie tellus vel nunc, vestibulum nunc a fringilla tincidunt, enim sed luctus consequat nec, ac suscipit nulla ut nunc ultrices mi. Neque metus nulla sapien vel. Donec gravida a elit, nonummy proin ipsum, vehicula fringilla aptent interdum ultrices scelerisque laoreet, qui mollis id egestas per litora, dis sed dui lectus donec consectetuer lectus.</p>
+      <div class="col l5 s12">
+        <p class="intro center-align">While away from building and coding sites, I enjoy spending time with close family and friends. I have a guilty pleasure for video gaming as a means of relaxation, whether playing Nintendo or PSO. <br><br> But I also enjoy getting lost in artbooks and graphic novels. Some days I have a change of pace and turn to Yoga and outdoor exercising for a healthier lifestyle.</p>
       </div>
-      <div class="col l6 s12">
-        <img src="images/Full_Power_Duo_Magazine1.PNG" height="480" width="360">
+      <div class="col l2 offset-l2 s12">
+        <img src="images/FILE0021.JPG" height="240" width="360">
       </div>
     </div>
   </div>   
+
+  <div class="container">
+  <div id="contact" class="section-header center-align">
+    <h3>Hire Me!</h3>
+  </div>
+  <div class="divider"></div>
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+
+  <footer class="page-footer blue darken-4">
+    <div class="footer-copyright">
+      <div class="container">
+      © 2017 Copyright Iel Cunanan
+      </div>
+    </div>
+  </footer>
+  <div id="to_the_top"></div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -160,6 +223,6 @@
     <script src="scripts/vendor.js"></script>
     
     <script src="scripts/main.js"></script>
-  </div>
+    </div>
   </body>
 </html>
