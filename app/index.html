@@ -6,13 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Iel Cunanan -- Web Developer</title>
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    
-    <!-- <style>
-    #logo {
-      margin: 0 auto;
-      max-width: 100%;
-    } -->
-    </style>
+    <script src="https://use.fontawesome.com/6dbefe88fd.js"></script>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -58,10 +52,10 @@
           </div>
         </div>
         <div class="row">
-          <a class="waves-effect btn-large hoverable blue accent-3" href="#about">Welcome!</a>
+          <a id="welcome-button" class="waves-effect btn-large hoverable blue accent-3" href="#about">Welcome!</a>
         </div>
       </div>
-        <div id="pbackground" style="background-image: url('webbg.jpg');" class="parallax">
+        <div id="pbackground" style="background-image: url('images/webbg.jpg');" class="parallax">
         </div>
   </div>
  
@@ -123,13 +117,14 @@
   <div class="container">
     <div class="row">
       <div id="gallery" class="section-header center-align">
-        <h3>Selected Gallery Feature</h3>
+        <h3>Project Works</h3>
+        <div class="divider"></div>
       </div>
-      <div id="gallery" class="divider"></div>
+      <div id="gallery"></div>
       <div class="col l4 s12">
         <div class="card">
             <div class="card-image">
-              <img class="pieces" src="images/port_1.png">
+              <a href="#"><img class="pieces" src="images/port_1.png"></a>
             </div>
             <div class="card-content">
               <p>Small animation displaying various objects according to user input.</p>
@@ -139,7 +134,7 @@
       <div class="col l4 s12">
         <div class="card">
             <div class="card-image">
-              <img class="pieces" src="images/port_2.png">
+              <a href="#"><img class="pieces" src="images/port_2.png"></a>
               <span class="card-title">Card Title</span>
             </div>
             <div class="card-content">
@@ -150,13 +145,38 @@
       <div class="col l4 s12">
         <div class="card">
             <div class="card-image">
-              <img class="pieces" src="images/Full_Power_Duo_Magazine1.png">
+              <a href="#"><img class="pieces" src="images/Full_Power_Duo_Magazine1.png"></a>
             </div>
             <div class="card-content">
               <p>A fictional magazine project.<br> Made with Photoshop.</p>
             </div>
           </div>
       </div>
+  </div>
+
+  <div class="row">
+    <div id="gallery"></div>
+    <div class="col l4 s12">
+      <div class="card">
+          <div class="card-image">
+            <a href="#"><img class="pieces" src="images/port_1.png"></a>
+          </div>
+          <div class="card-content">
+            <p>Small animation displaying various objects according to user input.</p>
+          </div>
+        </div>
+    </div>
+    <div class="col l4 s12">
+      <div class="card">
+          <div class="card-image">
+            <a href="#"><img class="pieces" src="images/port_2.png"></a>
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>Animated logo made with JavaScript and jQuery.</p>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
 
@@ -165,51 +185,41 @@
     <div class="row">
       <div id="about" class="section-header center-align">
         <h3>About Me</h3>
+        <div class="divider"></div>
       </div>
-      <div id="about" class="divider"></div>
+      <div id="about"></div>
       <div class="col l2 s12">
-        <img class="intro" src="images/CunananIel2Onionhead.jpg" height="240" width="360">
+        <img class="intro card-panel" src="images/CunananIel2Onionhead.jpg" height="240" width="360">
       </div>
       <div class="col l5 offset-l5 s12">
-        <h5 class="right-align">I am an up-and-coming web developer from Inverness, FL. My services are available from doing startups to site maintenance.<br> Allow me to grow your business with clean and simple-designed websites!</h5>
+        <p class="intro left-align">I am an up-and-coming web developer from Inverness, FL. I am currently seeking an entry-level position with a goal to sharpen my skillset and grow within the tech industry.<br><br> I have an undying passion for learning new technologies and observing their impact through the latest trends that people experience!</p>
       </div>
     </div>
     
     <div class="row">
       <div class="col l5 s12">
-        <p class="intro center-align">While away from building and coding sites, I enjoy spending time with close family and friends. I have a guilty pleasure for video gaming as a means of relaxation, whether playing Nintendo or PSO. <br><br> But I also enjoy getting lost in artbooks and graphic novels. Some days I have a change of pace and turn to Yoga and outdoor exercising for a healthier lifestyle.</p>
+        <p class="intro left-align">While away from building and coding sites, I enjoy spending time with close family and friends. I have a guilty pleasure for video gaming as a means of relaxation, whether playing Nintendo games or Phantasy Star Online. <br><br> I also enjoy drawing and getting lost in artbooks and sci-fi/fantasy settings. Some days I have a change of pace and turn to Yoga and outdoor exercising to balance my lifestyle.</p>
       </div>
       <div class="col l2 offset-l2 s12">
-        <img src="images/FILE0021.JPG" height="240" width="360">
+        <img class="card-panel" src="images/FILE0021.JPG" height="240" width="360">
       </div>
     </div>
   </div>   
 
   <div class="container">
   <div id="contact" class="section-header center-align">
-    <h3>Hire Me!</h3>
+    <h3>Contact Info</h3>
+    <div class="divider"></div>
   </div>
-  <div class="divider"></div>
     <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
+      <div class="col l12 m12 s12">
+        <ul class="contact-info">
+          <li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:352-246-7746">(352)-246-7746</a></li>
+          <li class="mail"><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:ielcunanan8@gmail.com">ielcunanan8@gmail.com</a></li>
+          <li class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i><a href="https://www.linkedin.com/in/iel-cunanan-47b136124/" target="_blank">LinkedIn Profile</a></li>
+        </ul>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
   </div>
 
   <footer class="page-footer blue darken-4">
