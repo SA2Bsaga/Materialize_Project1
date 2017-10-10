@@ -5,8 +5,13 @@
   padding: 0.2em 0;
 }
 
-.brand-logo {
-  margin-left: 10px;
+.parallax-container {
+  height: 650px;
+}
+
+.btn-large:hover {
+  color: darkblue;
+  transition: 0.6s;
 }
 
 .arc text {
@@ -20,6 +25,8 @@
 
 .pieces {
   padding: 3px;
+  width: 290px;
+  height: 374px;
 }
 
 .intro {
@@ -40,18 +47,22 @@ svg {
   background: url('/images/webbg.jpg') repeat;
 }
 
+#da_skills {
+  max-width: 100%;
+}
+
+#nav-mobile {
+  margin: 0 auto;
+}
+
 body {
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
-#welcome-button:hover {
-  color: lightblue;
-}
-
-.nav-mobile li a:hover {
-  color: darkblue;
+#nav ul li{
+  display: inline-block;
 }
 
 .hero-unit {
@@ -102,4 +113,27 @@ body {
   background-color: slategrey;
   border-radius: 100%;
   transition: 1.1s;
+}
+
+/* Media Queries */
+
+@media (max-width: 992px) {
+
+  #da_skills {
+    width: 960px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  #da_skills {
+    width: 480px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 700px) {
+
+  #da_skills {
+    width: 700px;
+  }
 }
