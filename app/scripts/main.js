@@ -6,11 +6,11 @@ $(document).ready(function() {
     $('.parallax').parallax();
 
     $('.tlt').textillate({ in: { effect: 'fadeInLeft' } });
+
     $('#to_the_top').scroll2Top({
       appearAt: 650,
       scrollSpeed: 1000
     });
-
 });
 
 $(function() {

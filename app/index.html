@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Iel Cunanan -- Web Developer</title>
     <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <!-- Fallback links for D3 -->
+    <script src="https://fastcdn.org/D3.js/3.5.6/d3.min.js"></script>
+    <script src="scripts/d3.v3.min.js"></script>
+
+    <!-- Link for icons -->
     <script src="https://use.fontawesome.com/6dbefe88fd.js"></script>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -59,11 +65,30 @@
   </div>
   
   <div class="container valign center-align">
-    <script>
+    <script type="text/javascript">
+    var width,
+        height,
+        radius;
 
-    var width = 960,
-        height = 500,
+    //Use window.innerWidth as control flow for SVG
+    //Does NOT work for IE8 or earlier versions
+    if (window.innerWidth < 500) {
+        width = 460;
+        height = 300;
         radius = Math.min(width, height) / 2;
+    }
+    else if (window.innerWidth > 499 && window.innerWidth < 992) {
+        width = 860;
+        height = 400;
+        radius = Math.min(width, height) / 2;
+    }
+    else {
+        width = 960;
+        height = 500;
+        radius = Math.min(width, height) / 2;
+    }
+    console.log(window.innerWidth);
+    
 
     var color = d3.scale.ordinal()
         .range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00']);
@@ -115,7 +140,7 @@
         <div class="divider"></div>
       </div>
       <div id="gallery"></div>
-      <div class="col l4 s12">
+      <div class="col l4 m6 s12">
         <div class="card">
             <div class="card-image">
               <a href="portfolio_piece1/finalproject.html"><img class="pieces" src="images/port_1resize.png"></a>
@@ -125,7 +150,7 @@
             </div>
           </div>
       </div>
-      <div class="col l4 s12">
+      <div class="col l4 m6 s12">
         <div class="card">
             <div class="card-image">
               <a href="portfolio_piece2/animation_demo.html"><img class="pieces" src="images/port_2resize.png"></a>
@@ -135,7 +160,7 @@
             </div>
           </div>
       </div>
-      <div class="col l4 s12">
+      <div class="col l4 m6 s12">
         <div class="card">
             <div class="card-image">
               <a href="portfolio_piece3/Full_Power_Duo_Magazine1.png"><img class="pieces" src="images/Full_Power_Duo_Magazine1.png"></a>
@@ -146,9 +171,10 @@
           </div>
       </div>
   </div>
-  <!--
   <div class="row">
-    <div class="col l4 s12">
+
+  <!--
+    <div class="col l4 m6 s12">
       <div class="card">
           <div class="card-image">
             <a href="portfolio_piece4/CunananIel3C-Sector.jpg"><img class="pieces" src="images/port_4resize.png"></a>
@@ -158,7 +184,7 @@
           </div>
         </div>
     </div> -->
-    <div class="col l4 s12">
+    <div class="col l4 m6 s12">
       <div class="card">
           <div class="card-image">
             <a href="portfolio_piece5/index.html"><img class="pieces" src="images/port_5resize.png"></a>
@@ -179,19 +205,19 @@
         <div class="divider"></div>
       </div>
       <div id="about"></div>
-      <div class="col l2 s12">
+      <div class="col l2 s12 center-align">
         <img class="intro card-panel" src="images/CunananIel2Onionhead.jpg" height="240" width="360">
       </div>
-      <div class="col l5 offset-l5 s12">
+      <div class="col l5 offset-l5 s12 center-align">
         <p class="intro left-align">I am an up-and-coming web developer from Inverness, FL. I am currently seeking an entry-level position with a goal to sharpen my skillset and grow within the tech industry.<br><br> I have an undying passion for learning new technologies and observing their impact through the latest trends that people experience!</p>
       </div>
     </div>
     
     <div class="row">
-      <div class="col l5 s12">
-        <p class="intro left-align">While away from building and coding sites, I enjoy spending time with close family and friends. I have a guilty pleasure for video gaming as a means of relaxation, whether playing Nintendo games or Phantasy Star Online. <br><br> I also enjoy drawing and getting lost in artbooks and sci-fi/fantasy settings. Some days I have a change of pace and turn to Yoga and outdoor exercising to balance my lifestyle.</p>
+      <div class="col l5 s12 center-align">
+        <p class="intro left-align">While away from coding and building sites, I enjoy spending time with close family and friends. I have a guilty pleasure for video gaming as a means of relaxation, whether playing Nintendo games or Phantasy Star Online. <br><br> I also enjoy drawing and getting lost in artbooks and sci-fi/fantasy settings to foster both creativity and inspiration. Some days I have a change of pace and turn to Yoga and outdoor exercising to balance my lifestyle.</p>
       </div>
-      <div class="col l2 offset-l2 s12">
+      <div class="col l2 offset-l2 s12 center-align">
         <img class="card-panel" src="images/FILE0021.JPG" height="240" width="360">
       </div>
     </div>
