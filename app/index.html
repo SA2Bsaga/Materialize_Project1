@@ -73,8 +73,8 @@
     //Use window.innerWidth as control flow for SVG
     //Does NOT work for IE8 or earlier versions
     if (window.innerWidth < 500) {
-        width = 460;
-        height = 300;
+        width = window.innerWidth;
+        height = (window.innerWidth - 120);
         radius = Math.min(width, height) / 2;
     }
     else if (window.innerWidth > 499 && window.innerWidth < 992) {
@@ -87,7 +87,7 @@
         height = 500;
         radius = Math.min(width, height) / 2;
     }
-    console.log(window.innerWidth);
+    //console.log(window.innerWidth);
     
 
     var color = d3.scale.ordinal()
