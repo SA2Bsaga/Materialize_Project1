@@ -14,12 +14,12 @@ $(document).ready(function() {
 });
 
 function toggleNav() {
-      var x = document.getElementById("nav");
-      if (x.className === "non-mobile") {
-          x.className += " responsive";
+      var x = document.getElementById('nav');
+      if (x.className === 'non-mobile') {
+          x.className += ' responsive';
       }
       else {
-        x.className = "non-mobile";
+        x.className = 'non-mobile';
       }
     }
 
