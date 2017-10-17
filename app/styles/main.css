@@ -59,19 +59,28 @@ h3 {
                0 2.4px 3.6px  black;
 }
 
-#nav {
-  overflow: hidden;
-}
-
 body {
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
-#nav ul li {
+/* START Nav bar configuration --------- */
+
+.non-mobile {
+  overflow: hidden;
+}
+
+.non-mobile ul li {
   display: inline-block;
 }
+
+.non-mobile .icon {
+  display: none;
+}
+
+
+/* END Nav bar configuration ---------- */
 
 .hero-unit {
   margin: 50px auto 0 auto;
@@ -134,6 +143,11 @@ body {
     margin: 0 40px;
     max-width: 100%;
   }
+
+  .non-mobile ul li {
+    display: block;
+    margin: 6px 0;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -143,12 +157,47 @@ body {
     height: 168px;
   }
 
-  #nav ul li {
+  .non-mobile ul li {
+    display: none;
+  }
+
+  .non-mobile a.icon {
+    float: center;
     display: block;
-    margin: 6px 0;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    font-size: 25px;
+  }
+
+  .non-mobile a.icon:hover {
+    background-color: rgba(100, 100, 100, 0.3);
+    transition: 0.7s;
+  }
+
+  .non-mobile.responsive ul li:first-child {
+    display: none;
+  }
+
+  #skill, #chart {
+    display: none;
+  }
+
+  .non-mobile.responsive ul li {
+    float: none;
+    display: inline-block;
+  }
+
+  .btn-large {
+    width: 90px;
+    text-align: center;
+    padding: 0 5px;
+    margin: 5px;
   }
 
   svg {
+    display: none;
     position: relative;
     left: -80px;
   }
@@ -158,5 +207,10 @@ body {
 
   svg {
     margin: 0 20px;
+  }
+
+  .non-mobile ul li {
+    display: block;
+    margin: 6px 0;
   }
 }

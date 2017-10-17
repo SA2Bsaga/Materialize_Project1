@@ -46,7 +46,8 @@
             <h4 class="tlt white-text">Front-end web developer / designer</h4>
           </div>
         </div>
-        <div id="nav">
+        <div class="non-mobile" id="nav">
+          <a href="javascript:void(0);" class="icon" onclick="toggleNav()">&#9776;</a>
           <ul>
             <li><a class="waves-effect btn-large hoverable blue accent-3" href="#skill">Skillset</a></li>
             <li><a class="waves-effect btn-large hoverable blue accent-3" href="#about">About</a></li>
@@ -64,7 +65,7 @@
     <div class="divider"></div>
   </div>
   
-  <div class="container valign center-align">
+  <div id="chart" class="container valign center-align">
     <script type="text/javascript">
     var width,
         height,
@@ -78,8 +79,8 @@
         radius = Math.min(width, height) / 2;
     }
     else if (window.innerWidth > 499 && window.innerWidth < 992) {
-        width = 860;
-        height = 400;
+        width = window.innerWidth;
+        height = (window.innerWidth - 150);
         radius = Math.min(width, height) / 2;
     }
     else {
